@@ -60,3 +60,17 @@ function timestampToTime(timestamp) {
     return Y + M + D + h + m + s;
 }
 ```
+
+在树形结构中查找符合某项条件的节点：
+```js
+function findTreeNode(tree, func) {
+    for (const item of tree) {
+        if (func(item)) return item
+        if (item.children && item.children.length) {
+            const res = findTreeNode(item.children, func)
+            if (res) return res
+        }
+    }
+    return false
+}
+```
